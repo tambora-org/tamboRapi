@@ -1,7 +1,7 @@
 source("R/tmbImportPackages.R")
 
 # define needed packages
-packages <- c("jsonlite", "httr")
+packages <- c("jsonlite", "httr", "sp")
 tmbImportPackages(packages)
 
 defaultBaseUrl <- "https://www.tambora.org/index.php/" 
