@@ -1,8 +1,10 @@
 source("R/tmbImportPackages.R")
 
-# define needed packages
-packages <- c("extrafont", "ggmap", "ggplot2")
-tmbImportPackages(packages)
+installDrawPackages <- function() {
+  # define needed packages
+  packages <- c("extrafont", "ggmap", "ggplot2")
+  tmbImportPackages(packages)
+}
 
 #' Draw summary of all tambora data to a map
 #'
@@ -14,6 +16,7 @@ tmbImportPackages(packages)
 #' data<-fromTambora(); drawWorldMapAll(data)
 
 drawWorldMapAll <- function(tamboraData) {
+  installDrawPackages()
   bbox <- make_bbox(lon = tamboraData$x, lat = tamboraData$y, f = 0.05)
 
   # create a layer of borders

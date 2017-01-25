@@ -1,8 +1,10 @@
 source("R/tmbImportPackages.R")
 
-# define needed packages
-packages <- c("jsonlite", "httr", "sp")
-tmbImportPackages(packages)
+installJsonPackages <- function() {
+  # define needed packages
+  packages <- c("jsonlite", "httr", "sp")
+  tmbImportPackages(packages)
+}
 
 defaultBaseUrl <- "https://www.tambora.org/index.php/" 
 # set string respectively the id of a public tambora.org collection 
@@ -21,6 +23,7 @@ defaultSearchString = "g[cid]=58"
 #' fromTambora()
 
 fromTambora <- function(searchString, userEmail, userToken, baseUrl) {
+  installJsonPackages()
   if(missing(searchString)) {
      searchString <- defaultSearchString
   }
