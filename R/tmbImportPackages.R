@@ -1,4 +1,5 @@
 #' Install and load multiple packages
+#' Thanks to https://gist.github.com/stevenworthington
 #'
 #' This function allows you to install and load multiple packages
 #' @param pkg list of packages, i.e.   c("jsonlite", "httr")

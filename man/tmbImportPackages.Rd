@@ -2,7 +2,8 @@
 % Please edit documentation in R/tmbImportPackages.R
 \name{tmbImportPackages}
 \alias{tmbImportPackages}
-\title{Install and load multiple packages}
+\title{Install and load multiple packages
+Thanks to https://gist.github.com/stevenworthington}
 \usage{
 tmbImportPackages(pkg)
 }
