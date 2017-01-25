@@ -1,8 +1,8 @@
 # needs devtools to install via github 
 #
-## install.packages("devtools")
+## install.packages("devtools", dependencies = TRUE)
 ## library("devtools")
-install_github('tamboRapi','tambora-org')
+install_github('tambora-org/tamboRapi')
 
 # inquire data from collection 156: The Grotzfeld data set
 data <- fromTambora("g[cid]=156")
