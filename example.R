@@ -1,4 +1,4 @@
-# needs devtools to install via github
+# needs devtools to install via github 
 #
 ## install.packages("devtools")
 ## library("devtools")
