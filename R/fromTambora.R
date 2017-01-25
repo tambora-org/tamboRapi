@@ -32,17 +32,17 @@ fromTambora <- function(searchString, userEmail, userToken, baseUrl) {
   urlSearch <- paste(baseUrl, "grouping/event/json?limit=50&", searchString, sep=""); 
   
   # get chunks of 50 untill nothing is left...
-  nextPage <- 1
-  while(nextPage>0) {
+nextPage <- 1
+while(nextPage>0) {
     url <- paste(urlSearch, "&page=", nextPage, sep="");
     set_config( config( ssl_verifypeer = 0L ));
     #print(url);
     tmbEventsAll <- fromJSON(content(GET(url), "text"));
-    tamboraData <- tmbEventsAll$results
+    newEvents <- tmbEventsAll$results
     if (nextPage==1) {
-       tmbEvents <- tamboraData;   
+       tamboraData <- newEvents;   
     } else {
-      tmbEvents <- rbind(tmbEvents, tamboraData);  
+      tamboraData <- rbind(tamboraData, newEvents);  
     };
     nextPage <- tmbEventsAll$nextPage;
     #print(nextPage);
