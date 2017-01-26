@@ -1,5 +1,5 @@
 # needs devtools to install via github 
-## install.packages("devtools", dependencies = TRUE)
+## if (!require("devtools")) install.packages("devtools")
 ## library("devtools")
 devtools::install_github('tambora-org/tamboRapi')
 
