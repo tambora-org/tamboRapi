@@ -34,6 +34,8 @@ fromTambora <- function(searchString, userEmail, userToken, baseUrl) {
   # define data-format as json and set limit per page 50 
   urlSearch <- paste(baseUrl, "grouping/event/json?limit=50&", searchString, sep=""); 
   
+  writeLines("Inquiring data from tambora.org:");
+  writeLines("+----+----+----+----+----+----+----+----+----+----+");  
   # get chunks of 50 untill nothing is left...
 nextPage <- 1
 while(nextPage>0) {
@@ -47,10 +49,12 @@ while(nextPage>0) {
     } else {
       tamboraData <- rbind(tamboraData, newEvents);  
     };
-    nextPage <- tmbEventsAll$nextPage;
-    #print(nextPage);
+    deltaFactor <- 50 * strtoi(tmbEventsAll$limit) / strtoi(tmbEventsAll$total);
+    deltaMarks <- round(nextPage*deltaFactor) - round((nextPage-1)*deltaFactor)
+    writeLines(substr('oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo', 0, deltaMarks), sep = ""); 
+    nextPage <- tmbEventsAll$nextPage; 
   }
-
+  writeLines('o\nFinished'); 
   class(tamboraData) 
   coordinates(tamboraData)<-~longitude+latitude 
 
