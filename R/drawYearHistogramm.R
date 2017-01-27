@@ -17,5 +17,5 @@ installDrawPackages <- function() {
 
 drawYearHistogramm <- function(tamboraData) {
   installDrawPackages()
-  ggplot(data, aes(begin_year)) + geom_histogram(color = "#6F9BC5", fill = "#6F9BC5", binwidth = 0.5)
+  ggplot(tamboraData, aes(begin_year)) + geom_histogram(color = "#6F9BC5", fill = "#6F9BC5", binwidth = 0.5)
 }
