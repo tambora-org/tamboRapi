@@ -18,16 +18,16 @@ installDrawPackages <- function() {
 drawIndexBoxPlot <- function(tamboraData) {
   installDrawPackages()
    
-  mean_index <- aggregate(data[,'value_index'], list(data$begin_year), mean)
+  mean_index <- aggregate(tamboraData[,'value_index'], list(tamboraData$begin_year), mean)
 
   #match to two columns with different length by machting criteria
-  data$mean <- mean_index[match(data$begin_year, mean_index$Group.1), 'x']
+  data$mean <- mean_index[match(tamboraData$begin_year, mean_index$Group.1), 'x']
 
-  ggplot(aes(y = value_index, x = begin_year), data = data, x) 
-    +labs(fill= "Index", x = "Year", y = "Temperature Index", title = "")
-    +geom_boxplot(aes(fill=mean, group = cut_width(begin_year, 1)), outlier.alpha = 0.1)
-    +scale_y_continuous(breaks=c(-3,-2,-1,0,1,2,3))
-    +scale_fill_gradient2(low="blue", mid="green", high="red", limits=c(-3,+3))
-    +geom_jitter(size = 0.5,  width = 0.5, height = 0.25)
-    +geom_smooth()
+  ggplot(aes(y = value_index, x = begin_year), data = tamboraData, x)+ 
+    labs(fill= "Index", x = "Year", y = "Temperature Index", title = "")+
+    geom_boxplot(aes(fill=mean, group = cut_width(begin_year, 1)), outlier.alpha = 0.1)+
+    scale_y_continuous(breaks=c(-3,-2,-1,0,1,2,3))+
+    scale_fill_gradient2(low="blue", mid="green", high="red", limits=c(-3,+3))+
+    geom_jitter(size = 0.5,  width = 0.5, height = 0.25)+
+    geom_smooth()
 }
