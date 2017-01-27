@@ -18,7 +18,7 @@ installDrawPackages <- function() {
 drawYearMonthDensity <- function(tamboraData) {
   installDrawPackages()
   
-  data_time <- count(data, c("begin_year", "begin_month_id")) 
+  data_time <- count(tamboraData, c("begin_year", "begin_month_id")) 
   data_time <- data_time[complete.cases(data_time ),]
   mean_year <- mean(data_time$begin_year, na.rm=TRUE)
   sd_year <- sd(data_time$begin_year, na.rm=TRUE)
