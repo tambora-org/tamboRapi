@@ -17,7 +17,7 @@ installDrawPackages <- function() {
 
 drawIndexBoxPlot <- function(tamboraData) {
   installDrawPackages()
-  
+   
   mean_index <- aggregate(data[,'value_index'], list(data$begin_year), mean)
 
   #match to two columns with different length by machting criteria
