@@ -26,7 +26,7 @@ drawIndexBoxPlot <- function(tamboraData) {
   #Make sure that value_index is double type for mean calculation without rounding
   value_year$value_index <- as.double(value_year$value_index)
   #calculate mean for each year seperately
-  mean_index <-  aggregate(value_index~begin_year,  value_year, mean )
+  mean_index <-  aggregate(value_index~begin_year, value_year, mean )
   #Rename column
   mean_index$average_year <- mean_index$value_index
   
