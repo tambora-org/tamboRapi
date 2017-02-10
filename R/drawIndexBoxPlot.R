@@ -17,11 +17,21 @@ installDrawPackages <- function() {
 
 drawIndexBoxPlot <- function(tamboraData) {
   installDrawPackages()
-   
-  mean_index <- aggregate(tamboraData[,'value_index'], list(tamboraData$begin_year), mean)
+ 
+  #create subset of column realy needed, here value_index and begin_year
+  value_year <- tamboraData[,c('value_index', 'begin_year')]
 
+  #keep only complete rows with full entries for subset
+  value_year <- value_year[complete.cases(value_year),]
+  #Make sure that value_index is double type for mean calculation without rounding
+  value_year$value_index <- as.double(value_year$value_index)
+  #calculate mean for each year seperately
+  mean_index <-  aggregate(value_index~begin_year,  value_year, mean )
+  #Rename column
+  mean_index$average_year <- value_year$value_index
+  
   #match to two columns with different length by machting criteria
-  data$mean <- mean_index[match(tamboraData$begin_year, mean_index$Group.1), 'x']
+  data$mean <- mean_index[match(tamboraData$begin_year, mean_index$average_year), 'x']
 
   ggplot(aes(y = value_index, x = begin_year), data = tamboraData, x)+ 
     labs(fill= "Index", x = "Year", y = "Temperature Index", title = "")+
