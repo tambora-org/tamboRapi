@@ -27,7 +27,7 @@ drawYearMonthDensity <- function(tamboraData) {
 
 mp <- ggplot(data_time, aes(begin_year, begin_month_id))
 
-mp + geom_raster(aes(fill=n))+
+mp + geom_raster(aes(fill=freq))+
   scale_y_continuous(breaks=c(1,6,12))+
   theme(panel.background = element_rect(fill = '#EEEEEE', colour = 'white'), legend.position="right", text=element_text(size=14, family="Calibri"))+
   scale_fill_gradient(low="#8FABE5", high="#0F3B73")
