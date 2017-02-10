@@ -31,7 +31,7 @@ drawIndexBoxPlot <- function(tamboraData) {
   mean_index$average_year <- mean_index$value_index
   
   #match to two columns with different length by machting criteria
-  tamboraData$mean <- mean_index[match(tamboraData$begin_year, mean_index$average_year), 'begin_year']
+  tamboraData$mean <- mean_index[match(tamboraData$begin_year, mean_index$begin_year), 'average_year']
 
   ggplot(aes(y = value_index, x = begin_year), data = tamboraData, x)+ 
     labs(fill= "Index", x = "Year", y = "Temperature Index", title = "")+
