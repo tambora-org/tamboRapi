@@ -17,3 +17,8 @@ tamboRapi::drawIndexBoxPlot(data2)
 data3 <- tamboRapi::fromTambora("c[nd]=315&s[lt1]=33.28&s[lg1]=-7.73&s[lt2]=61.10&s[lg2]=26.54")
 # draw a histogramm across the years
 tamboRapi::drawYearHistogramm(data3)
+
+# inquire data for snow
+data4 <- tamboRapi::fromTambora("c[nd]=116")
+# draw a density map for years & months
+tamboRapi::drawYearMonthDensity(data4)
