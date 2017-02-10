@@ -42,7 +42,8 @@ while(nextPage>0) {
     url <- paste(urlSearch, "&page=", nextPage, sep="");
     set_config( config( ssl_verifypeer = 0L ));
     #print(url);
-    tmbEventsAll <- fromJSON(content(GET(url), "text"), nullValue = NA);
+    tmbEventsAll <- fromJSON(content(GET(url), "text"));
+    tmbEventsAll[ is.na(tmbEventsAll) ] <- NA; 
     newEvents <- tmbEventsAll$results
     if (nextPage==1) {
        tamboraData <- newEvents;   
