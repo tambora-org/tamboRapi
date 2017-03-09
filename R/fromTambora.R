@@ -42,7 +42,7 @@ while(nextPage>0) {
     url <- paste(urlSearch, "&page=", nextPage, sep="");
     set_config( config( ssl_verifypeer = 0L ));
     #print(url);
-    tmbEventsAll <- fromJSON(content(GET(url), type="text"));
+    tmbEventsAll <- fromJSON(content(GET(url), type="text", encoding="UTF-8"));
     tmbEventsAll[ is.na(tmbEventsAll) ] <- NA; 
     newEvents <- tmbEventsAll$results
     if (nextPage==1) {
