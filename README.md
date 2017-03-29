@@ -1,2 +1,2 @@
 # tamboRapi
-Accessing tambora data in R made easy
+Accessing tambora.org data in R made easy and have some fun!
