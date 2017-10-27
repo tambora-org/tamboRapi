@@ -1,0 +1,23 @@
+one_percent <- nrow(tamboraData)/100
+node_label <- data.frame(t(sort((table(tamboraData$node_label)/one_percent), decreasing = TRUE)))
+names(node_label) <- chartr(".", " ", names(node_label))
+node_label$`not coded` <- NULL
+nodes <- node_label[1:10,2:3]
+colnames(nodes) <- c("label", "percent")
+
+nodes$label <- as.character(nodes$label)
+nodes$label <- factor(nodes$label, levels=unique(nodes$label))
+
+#Load fonts
+#font_import()# import all your fonts
+loadfonts(device = "win")
+windowsFonts(Calibri=windowsFont("Calibri"))
+
+#packages <- c("extrafont", "ggplot2")
+
+cairo_pdf("example_content.pdf", height=4, width=8, family="Calibri")
+  d <- ggplot(nodes, aes(nodes$label, nodes$percent))
+  d + geom_col(color="#6F9BC5", fill="#6F9BC5")+
+    labs(x="Codes", y="%", fill="")+
+    theme(legend.position="right", axis.text.x = element_text(angle = 90, hjust = 1), text=element_text(size=14, family="Calibri"))
+dev.off() 
